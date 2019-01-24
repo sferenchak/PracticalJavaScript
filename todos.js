@@ -1,24 +1,33 @@
 // todoList object
-const todoList = {
-    todos: ["item 1", "item 2", "item 3", "item 4"],
+var todoList = {
+    todos: [],
     displayTodos: function() {
         console.log("My Todos:", this.todos);
     },
-    addTodo: function(todo) {
-        this.todos.push(todo);
-        console.log("Added", todo);
+    addTodo: function(todoText) {
+        // add a todo object
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        console.log("Added", todoText);
         this.displayTodos();
     },
-    changeTodo: function(position, newValue) {
-        let oldValue = this.todos[position];
-        this.todos[position] = newValue;
-        console.log("Changed", oldValue, "to", newValue);
+    changeTodo: function(position, todoText) {
+        let oldText = this.todos[position].todoText;
+        this.todos[position].todoText = todoText;
+        console.log("Changed", oldText, "to", todoText);
+        this.displayTodos();
+    },
+    toggleCompleted: function(position) {
+        let todo = this.todos[position];
+        todo.completed = !todo.completed;
         this.displayTodos();
     },
     deleteTodo: function(position) {
-        let oldValue = this.todos[position];
+        let oldTodo = this.todos[position];
         this.todos.splice(position, 1);
-        console.log("Deleted", oldValue);
+        console.log("Deleted", oldTodo);
         this.displayTodos();
     }
 }
@@ -27,7 +36,9 @@ const todoList = {
 todoList.displayTodos();
 
 // add new todo
-todoList.addTodo("new todo");
+todoList.addTodo("new todo 1");
+todoList.addTodo("new todo 2");
+todoList.addTodo("new todo 3");
 
 // change todo
 todoList.changeTodo(1, 'item 2 Updated')

@@ -20,3 +20,8 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 * It should have an addTodo method
 * It should have a changeTodo method
 * It should have a deleteTodo method
+
+## V4 Requirements
+* todoList.addTodo should add objects
+* todoList.changeTodo should change the todoText property
+* todoList.toggleCompleted should change the completed property
