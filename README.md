@@ -25,3 +25,8 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 * todoList.addTodo should add objects
 * todoList.changeTodo should change the todoText property
 * todoList.toggleCompleted should change the completed property
+
+## V5 Requirements
+* .displayTodos should show .todoText
+* .displayTodos should tell you if .todos is empty
+* .displayTodos should show .completed
