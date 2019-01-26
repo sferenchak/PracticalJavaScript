@@ -30,3 +30,7 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 * .displayTodos should show .todoText
 * .displayTodos should tell you if .todos is empty
 * .displayTodos should show .completed
+
+## V6 Requirements
+* .toggleAll: If everything is true, make everything false.
+* .toggleAll: Otherwise, make everything true.
