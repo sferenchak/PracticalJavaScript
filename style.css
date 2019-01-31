@@ -1,0 +1,25 @@
+html, body {
+    margin: 0;
+}
+
+main {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background-color: rgb(38, 81, 199);
+    color: white;
+    padding: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 200ms ease-in-out;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(16, 63, 192);
+}

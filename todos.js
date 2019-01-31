@@ -1,5 +1,7 @@
+'use strict';
+
 // todoList object
-var todoList = {
+const todoList = {
   todos: [],
   displayTodos: function() {
     console.log("My Todos:");
@@ -38,8 +40,8 @@ var todoList = {
     this.displayTodos();
   },
   toggleAll: function() {
-    var totalTodos = this.todos.length;
-    var completedTodos = 0;
+    let totalTodos = this.todos.length;
+    let completedTodos = 0;
 
     // Get number of completed todos.
     this.todos.forEach(function(todo) {
@@ -78,3 +80,13 @@ todoList.changeTodo(1, "item 2 Updated");
 
 // delete a todo
 todoList.deleteTodo(1);
+
+const displayTodosBtn = document.querySelector('#displayTodos');
+const toggleAllBtn = document.querySelector('#toggleAll');
+
+displayTodosBtn.addEventListener('click', function() {
+  todoList.displayTodos();
+});
+toggleAllBtn.addEventListener('click', function() {
+  todoList.toggleAll();
+})

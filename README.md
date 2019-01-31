@@ -34,3 +34,8 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 ## V6 Requirements
 * .toggleAll: If everything is true, make everything false.
 * .toggleAll: Otherwise, make everything true.
+
+## V7 Requirements
+* There should a be "Dislay todos" button and "Toggle all" button in the app.
+* Clicking "Display todos" should run todoList.displayTodos.
+* Clicking "Toggle all" should run todoList.toggleAll.
