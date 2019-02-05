@@ -12,8 +12,30 @@
       <section class="todoList">
         <h1>Todo List</h1>
         <div class="todo-controls">
-            <button id="displayTodos">Display Todos</button>
-            <button id="toggleAll">Toggle All</button>
+          <button onclick="handlers.displayTodos()">Display Todos</button>
+          <button onclick="handlers.toggleAll()">Toggle All</button>
+        </div>
+        <div>
+          <label for="newTodo">Add New Todo</label>
+          <input type="text" name="Todo" id="newTodo" />
+          <button onclick="handlers.addTodo()">Add</button>
+        </div>
+        <div>
+          <label for="todoNumber">Todo to change:</label>
+          <input type="number" name="todoNumber" id="todoNumber">
+          <label for="todoChangeText">Change text to:</label>
+          <input type="text" name="todoChangeText" id="todoChangeText">
+          <button onclick="handlers.changeTodo()">Change Todo</button>
+        </div>
+        <div>
+          <label for="deleteTodoPosition">Todo to delete:</label>
+          <input type="number" name="deleteTodoPosition" id="deleteTodoPosition">
+          <button onclick="handlers.deleteTodo()">Delete</button>
+        </div>
+        <div>
+            <label for="toggleCompletedPosition">Todo to toggle:</label>
+            <input type="number" name="toggleCompletedPosition" id="toggleCompletedPosition">
+            <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
         </div>
       </section>
     </main>

@@ -39,3 +39,9 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 * There should a be "Dislay todos" button and "Toggle all" button in the app.
 * Clicking "Display todos" should run todoList.displayTodos.
 * Clicking "Toggle all" should run todoList.toggleAll.
+
+## V8 Requirements
+* It should have working controls for .addTodo
+* It should have working controls for .changeTodo
+* It should have working controls for .deleteTodo
+* It should have working controls for .toggleCompleted

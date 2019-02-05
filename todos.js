@@ -81,12 +81,33 @@ todoList.changeTodo(1, "item 2 Updated");
 // delete a todo
 todoList.deleteTodo(1);
 
-const displayTodosBtn = document.querySelector('#displayTodos');
-const toggleAllBtn = document.querySelector('#toggleAll');
-
-displayTodosBtn.addEventListener('click', function() {
-  todoList.displayTodos();
-});
-toggleAllBtn.addEventListener('click', function() {
-  todoList.toggleAll();
-})
+var handlers = {
+  displayTodos: function() {
+    todoList.displayTodos();
+  },
+  addTodo: function() {
+    let addTodoText = document.getElementById('newTodo');
+    todoList.addTodo(addTodoText.value);
+    addTodoText.value = '';
+  },
+  changeTodo: function() {
+    let changeTodoPosition = document.getElementById('todoNumber');
+    let changeTodoText = document.getElementById('todoChangeText');
+    todoList.changeTodo(changeTodoPosition.valueAsNumber, changeTodoText.value);
+    changeTodoPosition.value = '';
+    changeTodoText.value = '';
+  },
+  toggleCompleted: function() {
+    let toggleCompletedPosition = document.getElementById('toggleCompletedPosition');
+    todoList.toggleCompleted(toggleCompletedPosition.valueAsNumber);
+    toggleCompletedPosition.value = '';
+  },
+  toggleAll: function() {
+    todoList.toggleAll();
+  },
+  deleteTodo: function() {
+    let deleteTodoPosition = document.getElementById('deleteTodoPosition');
+    todoList.deleteTodo(deleteTodoPosition.valueAsNumber);
+    deleteTodoPosition.value = '';
+  }
+};
