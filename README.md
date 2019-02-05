@@ -57,3 +57,7 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 * Each li should have an id that has the todo position
 * Delete buttons should have access to the todo id
 * Clicking delete should update todoList.todos and the DOM
+
+## V11 Requirements
+* todoList.toggleAll should use forEach (Already done in previous version)
+* view.displayTodos should use forEach (Already don ein previous version)

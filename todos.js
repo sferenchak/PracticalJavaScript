@@ -28,17 +28,15 @@ const todoList = {
       }
     });
 
-    // If everything is true, make everything false;
-    if (completedTodos === totalTodos) {
-      this.todos.forEach(function(todo) {
+    this.todos.forEach(function(todo) {
+      // If everything is true, make everything false;
+      if (completedTodos === totalTodos) {
         todo.completed = false;
-      });
-    } else {
-      // Otherwise make everything true.
-      this.todos.forEach(function(todo) {
+      } else {
+        // Otherwise make everything true.
         todo.completed = true;
-      });
-    }
+      }
+    });
   },
   deleteTodo: function(position) {
     this.todos.splice(position, 1);
@@ -50,8 +48,7 @@ const view = {
     let todosOL = document.querySelector("#todoListDisplay>ol");
     todosOL.innerHTML = "";
     if (todoList.todos.length > 0) {
-      let counter = 0;
-      todoList.todos.forEach(todo => {
+      todoList.todos.forEach(function(todo, position) {
         let todoLi = document.createElement("li");
         let todoTextWithCompletion = "";
 
@@ -61,11 +58,11 @@ const view = {
           todoTextWithCompletion = "( ) " + todo.todoText;
         }
 
-        todoLi.id = counter++;
+        todoLi.id = position;
         todoLi.textContent = todoTextWithCompletion;
         todoLi.appendChild(this.createDeleteButton());
         todosOL.appendChild(todoLi);
-      });
+      }, this);
     } else {
       todosOL.innerHTML = "You have nothing to do. Go play games!";
     }
