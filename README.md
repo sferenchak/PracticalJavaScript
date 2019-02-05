@@ -50,3 +50,10 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 * There should be an li element for every todo
 * Each li element should contain .todoText
 * Each li element should show .completed
+
+## V10 Requirements
+* There should be a way to create delete buttons
+* There should be a delete button for each todo
+* Each li should have an id that has the todo position
+* Delete buttons should have access to the todo id
+* Clicking delete should update todoList.todos and the DOM

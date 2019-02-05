@@ -18,8 +18,19 @@ button {
     letter-spacing: 1px;
     transition: all 200ms ease-in-out;
     border-radius: 5px;
+    margin: 5px;
 }
 
 button:hover {
     background-color: rgb(16, 63, 192);
+}
+
+button.deleteButton {
+    padding: 4px;
+    background-color: rgb(199, 38, 38);
+}
+
+button.deleteButton:hover {
+    padding: 4px;
+    background-color: rgb(170, 29, 29);
 }

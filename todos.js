@@ -50,20 +50,44 @@ const view = {
     let todosOL = document.querySelector("#todoListDisplay>ol");
     todosOL.innerHTML = "";
     if (todoList.todos.length > 0) {
-      todoList.todos.forEach(function(todo) {
+      let counter = 0;
+      todoList.todos.forEach(todo => {
         let todoLi = document.createElement("li");
         let todoTextWithCompletion = "";
+
         if (todo.completed === true) {
           todoTextWithCompletion = "(x) " + todo.todoText;
         } else {
           todoTextWithCompletion = "( ) " + todo.todoText;
         }
+
+        todoLi.id = counter++;
         todoLi.textContent = todoTextWithCompletion;
+        todoLi.appendChild(this.createDeleteButton());
         todosOL.appendChild(todoLi);
       });
     } else {
       todosOL.innerHTML = "You have nothing to do. Go play games!";
     }
+  },
+  createDeleteButton: function() {
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "deleteButton";
+    return deleteButton;
+  },
+  setUpEventListeners: function() {
+    const todosOLEvent = document.querySelector("#todoListDisplay>ol");
+
+    todosOLEvent.addEventListener("click", function(event) {
+      // Get the element that was clicked
+      let elementClicked = event.target;
+
+      // Check if elementClicked is a delete button.
+      if (elementClicked.className === "deleteButton") {
+        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+    });
   }
 };
 
@@ -94,10 +118,10 @@ const handlers = {
     todoList.toggleAll();
     view.displayTodos();
   },
-  deleteTodo: function() {
-    let deleteTodoPosition = document.getElementById("deleteTodoPosition");
-    todoList.deleteTodo(deleteTodoPosition.valueAsNumber);
-    deleteTodoPosition.value = "";
+  deleteTodo: function(position) {
+    todoList.deleteTodo(position);
     view.displayTodos();
   }
 };
+
+view.setUpEventListeners();
