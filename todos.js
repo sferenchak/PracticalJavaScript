@@ -50,16 +50,15 @@ const view = {
     if (todoList.todos.length > 0) {
       todoList.todos.forEach(function(todo, position) {
         let todoLi = document.createElement("li");
-        let todoTextWithCompletion = "";
-
-        if (todo.completed === true) {
-          todoTextWithCompletion = "(x) " + todo.todoText;
-        } else {
-          todoTextWithCompletion = "( ) " + todo.todoText;
-        }
+        let todoTextWithCompletion = todo.todoText;
 
         todoLi.id = position;
         todoLi.textContent = todoTextWithCompletion;
+        if (todo.completed === true) {
+          todoLi.prepend(this.createCompletionIcon());
+        } else {
+          todoLi.prepend(this.createIncompleteIcon());
+        }
         todoLi.appendChild(this.createDeleteButton());
         todosOL.appendChild(todoLi);
       }, this);
@@ -73,6 +72,16 @@ const view = {
     deleteButton.className = "deleteButton";
     return deleteButton;
   },
+  createIncompleteIcon: function() {
+    let completionIcon = document.createElement("i");
+    completionIcon.classList = "far fa-circle";
+    return completionIcon;
+  },
+  createCompletionIcon: function() {
+    let completionIcon = document.createElement("i");
+    completionIcon.classList = "far fa-check-circle";
+    return completionIcon;
+  },
   setUpEventListeners: function() {
     const todosOLEvent = document.querySelector("#todoListDisplay>ol");
 
@@ -83,6 +92,8 @@ const view = {
       // Check if elementClicked is a delete button.
       if (elementClicked.className === "deleteButton") {
         handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      } else if (elementClicked.classList[0] === "far") { // Check if element Clicked is a completion icon
+        handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
       }
     });
   }
@@ -103,12 +114,8 @@ const handlers = {
     changeTodoText.value = "";
     view.displayTodos();
   },
-  toggleCompleted: function() {
-    let toggleCompletedPosition = document.getElementById(
-      "toggleCompletedPosition"
-    );
-    todoList.toggleCompleted(toggleCompletedPosition.valueAsNumber);
-    toggleCompletedPosition.value = "";
+  toggleCompleted: function(position) {
+    todoList.toggleCompleted(position);
     view.displayTodos();
   },
   toggleAll: function() {

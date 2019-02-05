@@ -34,3 +34,9 @@ button.deleteButton:hover {
     padding: 4px;
     background-color: rgb(170, 29, 29);
 }
+
+i.far {
+    margin: 4px;
+    cursor: pointer;
+    font-size: 1.8em;
+}

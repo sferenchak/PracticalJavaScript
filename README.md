@@ -61,3 +61,7 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 ## V11 Requirements
 * todoList.toggleAll should use forEach (Already done in previous version)
 * view.displayTodos should use forEach (Already don ein previous version)
+
+## V12 Requirements
+* Each todo should have an icon that can be clicked
+* Clicking on the icon should toggle the completion status in todoList.todos and the DOM
