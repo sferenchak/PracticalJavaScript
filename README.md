@@ -65,3 +65,9 @@ This is just a collection of code that is worked on during the Watch and Code Pr
 ## V12 Requirements
 * Each todo should have an icon that can be clicked
 * Clicking on the icon should toggle the completion status in todoList.todos and the DOM
+
+## V13 Requirements
+* Clicking on todo text should allow for direct change
+* Show Cancel and Save button when editing todo
+* Clicking Cancel will revert back to the old todo text
+* Clicking Save will update the todo text

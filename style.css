@@ -1,42 +1,48 @@
-html, body {
-    margin: 0;
+html,
+body {
+  margin: 0;
 }
-
 main {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 25px;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 25px;
 }
-
 button {
-    border: none;
-    cursor: pointer;
-    background-color: rgb(38, 81, 199);
-    color: white;
-    padding: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 200ms ease-in-out;
-    border-radius: 5px;
-    margin: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(38, 81, 199);
+  color: white;
+  padding: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 200ms ease-in-out;
+  border-radius: 5px;
+  margin: 5px;
 }
-
 button:hover {
-    background-color: rgb(16, 63, 192);
+  background-color: rgb(16, 63, 192);
 }
-
 button.deleteButton {
-    padding: 4px;
-    background-color: rgb(199, 38, 38);
+  padding: 4px;
+  background-color: rgb(199, 38, 38);
 }
-
 button.deleteButton:hover {
-    padding: 4px;
-    background-color: rgb(170, 29, 29);
+  background-color: rgb(170, 29, 29);
 }
-
+button.cancelButton {
+  background-color: rgb(199, 169, 38);
+}
+button.cancelButton:hover {
+  background-color: rgb(179, 152, 34);
+}
+button.saveButton {
+    background-color: rgb(38, 199, 46);
+  }
+  button.saveButton:hover {
+    background-color: rgb(31, 184, 38);
+  }
 i.far {
-    margin: 4px;
-    cursor: pointer;
-    font-size: 1.8em;
+  margin: 4px;
+  cursor: pointer;
+  font-size: 1.8em;
 }

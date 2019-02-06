@@ -50,10 +50,9 @@ const view = {
     if (todoList.todos.length > 0) {
       todoList.todos.forEach(function(todo, position) {
         let todoLi = document.createElement("li");
-        let todoTextWithCompletion = todo.todoText;
 
         todoLi.id = position;
-        todoLi.textContent = todoTextWithCompletion;
+        todoLi.appendChild(this.createTodoSpan(todo.todoText));
         if (todo.completed === true) {
           todoLi.prepend(this.createCompletionIcon());
         } else {
@@ -66,11 +65,29 @@ const view = {
       todosOL.innerHTML = "You have nothing to do. Go play games!";
     }
   },
+  createTodoSpan: function(todoText) {
+    let todoSpan = document.createElement("span");
+    todoSpan.textContent = todoText;
+    todoSpan.className = "todoText";
+    return todoSpan;
+  },
   createDeleteButton: function() {
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.className = "deleteButton";
     return deleteButton;
+  },
+  createSaveButton: function() {
+    let saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
+    saveButton.className = "saveButton";
+    return saveButton;
+  },
+  createCancelButton: function() {
+    let cancelButton = document.createElement("button");
+    cancelButton.textContent = "Cancel";
+    cancelButton.className = "cancelButton";
+    return cancelButton;
   },
   createIncompleteIcon: function() {
     let completionIcon = document.createElement("i");
@@ -82,6 +99,30 @@ const view = {
     completionIcon.classList = "far fa-check-circle";
     return completionIcon;
   },
+  toggleEditTodo: function(span) {
+    if (span && span.style.display === "") {
+      span.parentNode.className = "todoText editing";
+      span.style.display = "none";
+      let editTodoInput = document.createElement("input");
+      let oldText = span.textContent;
+      editTodoInput.value = oldText;
+      editTodoInput.type = "text";
+      editTodoInput.id = "todoEdit";
+      span.parentNode.insertBefore(editTodoInput, span);
+      span.parentNode.insertBefore(view.createCancelButton(), span);
+      span.parentNode.insertBefore(view.createSaveButton(), span);
+    } else {
+      let todoEdit = document.querySelector("#todoEdit");
+      let span = document.querySelector(".editing>span");
+      let cancelButton = document.querySelector(".cancelButton");
+      let saveButton = document.querySelector(".saveButton");
+      span.style.display = "";
+      span.parentNode.className = "todoText";
+      span.parentNode.removeChild(cancelButton);
+      span.parentNode.removeChild(saveButton);
+      todoEdit.parentNode.removeChild(todoEdit);
+    }
+  },
   setUpEventListeners: function() {
     const todosOLEvent = document.querySelector("#todoListDisplay>ol");
 
@@ -92,8 +133,18 @@ const view = {
       // Check if elementClicked is a delete button.
       if (elementClicked.className === "deleteButton") {
         handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
-      } else if (elementClicked.classList[0] === "far") { // Check if element Clicked is a completion icon
+      } else if (elementClicked.classList[0] === "far") {
+        // Check if element Clicked is a completion icon
         handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
+      } else if (elementClicked.className === "todoText") {
+        // Check if element clicked is existing todo text
+        view.toggleEditTodo(elementClicked);
+      } else if (elementClicked.className === "saveButton") {
+        // Check if element clicked is Save button
+        handlers.changeTodo(parseInt(elementClicked.parentNode.id));
+      } else if (elementClicked.className === "cancelButton") {
+        // Check if element cliecked is Cancel button
+        view.toggleEditTodo();
       }
     });
   }
@@ -106,12 +157,11 @@ const handlers = {
     addTodoText.value = "";
     view.displayTodos();
   },
-  changeTodo: function() {
-    let changeTodoPosition = document.getElementById("todoNumber");
-    let changeTodoText = document.getElementById("todoChangeText");
-    todoList.changeTodo(changeTodoPosition.valueAsNumber, changeTodoText.value);
-    changeTodoPosition.value = "";
-    changeTodoText.value = "";
+  changeTodo: function(position) {
+    let todoEdit = document.querySelector("#todoEdit");
+    let newTodoText = todoEdit.value;
+    todoEdit.parentNode.removeChild(todoEdit);
+    todoList.changeTodo(position, newTodoText);
     view.displayTodos();
   },
   toggleCompleted: function(position) {
