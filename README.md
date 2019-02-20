@@ -1,7 +1,9 @@
 # PracticalJavaScript
 This is just a collection of code that is worked on during the Watch and Code Practical JavaScript course.
 
-GitHub Pages link: https://sferenchak.github.io/PracticalJavaScript/
+Throughout this course, various versions of a "Todos" application were created. I took what was created in the course and took it two iterations further to improve the UX/UI a bit. There is still much that could be done for the UI, but that wasn't the purpose of this particular course I took.
+
+GitHub Pages link for "final" version: https://sferenchak.github.io/PracticalJavaScript/
 
 ## V1 Requirements
 * It Should have a place to store todos
